@@ -1,0 +1,11 @@
+spring:
+  rabbitmq:
+    host: rabbitmq #localhost
+    port: 5672
+    username: guest
+    password: guest
+sendgrid:
+  api-key: ${SENDGRID_API_KEY}
+
+server:
+  port: 8081
