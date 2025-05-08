@@ -1,4 +1,4 @@
-package org.code.notificationapproveconsumer;
+package org.code.notificationapproveconsumer.service;
 
 import com.sendgrid.*;
 import com.sendgrid.helpers.mail.*;
@@ -14,8 +14,11 @@ public class EmailService {
   @Value("${sendgrid.api-key}")
   private String sendGridApiKey;
 
+  @Value("${email.from}")
+  private String emailAddress;
+
   public void sendEmail(String to, String subject, String contentText) throws IOException {
-    Email from = new Email("thiagodasilvamachadoo44@gmail.com");
+    Email from = new Email(emailAddress);
     Email toEmail = new Email(to);
     Content content = new Content("text/plain", contentText);
     Mail mail = new Mail(from, subject, toEmail, content);

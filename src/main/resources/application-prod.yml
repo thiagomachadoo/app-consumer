@@ -10,7 +10,7 @@ spring:
   config:
     activate:
       on-profile:
-        active: dev
+        active: prod
 
 sendgrid:
   api-key: ${SENDGRID_API_KEY}

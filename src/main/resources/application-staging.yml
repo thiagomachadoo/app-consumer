@@ -10,7 +10,7 @@ spring:
   config:
     activate:
       on-profile:
-        active: dev
+        active: staging
 
 sendgrid:
   api-key: ${SENDGRID_API_KEY}
@@ -18,6 +18,4 @@ sendgrid:
 server:
   port: 8081
 
-email:
-  from: ${FROM_EMAIL_ADDRESS}
-  to: ${TO_EMAIL_ADDRESS}
+email: ${EMAIL_ADDRESS}

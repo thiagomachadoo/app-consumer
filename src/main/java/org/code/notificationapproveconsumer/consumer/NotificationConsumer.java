@@ -1,6 +1,8 @@
-package org.code.notificationapproveconsumer;
+package org.code.notificationapproveconsumer.consumer;
 
+import org.code.notificationapproveconsumer.service.*;
 import org.springframework.amqp.rabbit.annotation.*;
+import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 
 import java.io.*;
@@ -10,6 +12,9 @@ public class NotificationConsumer {
 
   private final EmailService emailService;
 
+  @Value("${email.to}")
+  private String emailAddress;
+
   public NotificationConsumer(EmailService emailService) {
     this.emailService = emailService;
   }
@@ -17,7 +22,6 @@ public class NotificationConsumer {
 
   @RabbitListener(queues = "notification-queue")
   public void consume(String message) throws IOException {
-    System.out.println("Mensagem recebida: " + message);
-    emailService.sendEmail("thiagodasilvamachadoo44@gmail.com", "Notificação de Aprovação", message);
+    emailService.sendEmail(emailAddress, "Notificação de Aprovação", message);
   }
 }
